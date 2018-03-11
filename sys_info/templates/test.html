@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Test{% endblock %}
+{% block content %}
+
+
+<p>请输入两个数字</p>
+<form action="/add/" method="get">
+    a: <input type="text" id="a" name="a"> <br>
+    b: <input type="text" id="b" name="b"> <br>
+    <p>result: <span id='result'></span></p>
+    <button type="button" id='sum'>提交</button>
+</form>
+
+<p>Loading Charact</p>
+
+<div id="dict">Ajax 加载字典</div>
+<p id="dict_result"></p>
+
+<div id="list">Ajax 加载列表</div>
+<p id="list_result"></p>
+
+<div id="div1"></div>
+
+{% load static %}
+<script src='{% static "\plugins\jquery\jquery.min.js" %}'></script>
+<script>
+
+    <!--setInterval(function() {-->
+
+        <!--$.getJSON('/ajax_list/',function(ret){-->
+            <!--//返回值 ret 在这里是一个列表-->
+            <!--for (var i = ret.length - 1 ; i >= 0; i&#45;&#45;) {-->
+              <!--// 把 ret 的每一项显示在网页上-->
+              <!--$('#list_result').append('Program' + ' ' + ret[i] + '<br>')-->
+            <!--};-->
+          <!--})-->
+    <!--}, 2000);-->
+
+    setInterval(function() {
+        $.getJSON('/cpu_percent/',function(ret){
+              $('#list_result').append('CPU_Percent:' + ' ' + ret + '<br>')
+          })
+    }, 2000);
+
+    $(document).ready(function(){
+      // 求和 a + b
+      $("#sum").click(function(){
+        var a = $("#a").val();
+        var b = $("#b").val();
+        $.get("{% url 'add' %}",{'a':a,'b':b}, function(ret){
+            $('#result').html(ret);
+        })
+      });
+      // list
+      $('#list').click(function(){
+          $.getJSON('/ajax_list/',function(ret){
+            //返回值 ret 在这里是一个列表
+            for (var i = ret.length - 1 ; i >= 0; i--) {
+              // 把 ret 的每一项显示在网页上
+              $('#list_result').append('Program' + ' ' + ret[i] + '<br>')
+            };
+          })
+      })
+
+       $("#div1").load("{% static "json.txt" %} #p1");
+    });
+</script>
+
+
+
+{% endblock %}
