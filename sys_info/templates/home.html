@@ -1,111 +1,245 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
+
 {% block head %}
 <!--WaitMe Css-->
 {% load static %}
 <link href='{% static "plugins/waitme/waitMe.css" %}' rel="stylesheet" />
+
+<script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="https://img.hcharts.cn/highcharts/highcharts-more.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/solid-gauge.js"></script>
+<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+
 {% endblock %}
 
 
 {% block content %}
 
-{{ request.path }}
+当前路径：{{ request.path }}
 
 <div class="row clearfix">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                操作系统信息 <small>Description text here...</small>
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li>
-                                    <a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="timer">
-                                        <i class="material-icons">loop</i>
-                                    </a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Python信息 <small>Description text here...</small>
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li>
-                                    <a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="ios">
-                                        <i class="material-icons">loop</i>
-                                    </a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                硬件信息 <small>Description text here...</small>
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li>
-                                    <a href="javascript:void(0);" data-toggle="cardloading" data-loading-effect="pulse">
-                                        <i class="material-icons">loop</i>
-                                    </a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            Quis pharetra a pharetra fames blandit. Risus faucibus velit Risus imperdiet mattis neque volutpat, etiam lacinia netus dictum magnis per facilisi sociosqu. Volutpat. Ridiculus nostra.
-                        </div>
-                    </div>
-                </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    操作系统信息
+                </h2>
             </div>
+            <div class="body">
+                <table>
+                    <tr>
+                        <td>操作系统名称：</td>
+                        <td>CentOS</td>
+                    </tr>
+                    <tr>
+                        <td>操作系统版本：</td>
+                        <td>7.3</td>
+                    </tr>
+                    <tr>
+                        <td>操作系统架构：</td>
+                        <td>x64</td>
+                    </tr>
+                    <tr>
+                        <td>主机名：</td>
+                        <td>master.jatdenz.org</td>
+                    </tr>
+                    <tr>
+                        <td>时区：</td>
+                        <td>Asia/ShangHai</td>
+                    </tr>
+                    <tr>
+                        <td>内核版本：</td>
+                        <td>4.4.0-17686-Microsoft</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    硬件信息
+                </h2>
+            </div>
+            <div class="body">
+                 <table>
+                    <tr>
+                        <td>CPU：</td>
+                        <td>Intel64 Family 6 Model 61 Stepping 4, GenuineIntel</td>
+                    </tr>
+                    <tr>
+                        <td>RAM：</td>
+                        <td>7.3</td>
+                    </tr>
+                    <tr>
+                        <td>网卡：</td>
+                        <td>x64</td>
+                    </tr>
+                    <tr>
+                        <td>硬盘：</td>
+                        <td>master.jatdenz.org</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Python信息
+                </h2>
+            </div>
+            <div class="body">
+                <table>
+                    <tr>
+                        <td>Python版本：</td>
+                        <td>3.5.0</td>
+                    </tr>
+                    <tr>
+                        <td>Python解释器版本：</td>
+                        <td>MSC v.1900 64 bit (AMD64)</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="width: 600px; height: 200px; margin: 0">
+    <div id="container-speed" style="width: 300px; height: 200px; float: left"></div>
+    <div id="container-rpm" style="width: 300px; height: 200px; float: left"></div>
+</div>
+
 
 {% endblock %}
-{% block js %}
+
+{% block js %}                             
 {% load static %}
 <!-- Wait Me Plugin Js -->
 <script src='{% static "plugins/waitme/waitMe.js" %}'></script>
 <!-- Custom Js -->
 <script src='{% static "js/pages/cards/basic.js" %}'></script>
+
+<script>
+    // 公共配置
+    Highcharts.setOptions({
+        chart: {
+            type: 'solidgauge'
+        },
+        title: null,
+        pane: {
+            center: ['50%', '85%'],
+            size: '140%',
+            startAngle: -90,
+            endAngle: 90,
+            background: {
+                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
+        tooltip: {
+            enabled: false
+        },
+        yAxis: {
+            stops: [
+                [0.1, '#55BF3B'], // green
+                [0.5, '#DDDF0D'], // yellow
+                [0.9, '#DF5353'] // red
+            ],
+            lineWidth: 0,
+            minorTickInterval: null,
+            tickPixelInterval: 400,
+            tickWidth: 0,
+            title: {
+                y: -70
+            },
+            labels: {
+                y: 16
+            }
+        },
+        plotOptions: {
+            solidgauge: {
+                dataLabels: {
+                    y: 5,
+                    borderWidth: 0,
+                    useHTML: true
+                }
+            }
+        }
+    });
+    // 速度仪表
+    var chart1 = Highcharts.chart('container-speed', {
+        yAxis: {
+            min: 0,
+            max: 100,
+            title: {
+                text: 'CPU百分比'
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: '速度',
+            data: [80],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+                '<span style="font-size:12px;color:silver">%/2s</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' km/h'
+            }
+        }]
+    });
+    // 转速仪表
+    var chart2 = Highcharts.chart('container-rpm', {
+        yAxis: {
+            min: 0,
+            max: 100,
+            title: {
+                text: 'RAM百分比'
+            }
+        },
+        series: [{
+            name: 'RPM',
+            data: [1],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y:.1f}</span><br/>' +
+                '<span style="font-size:12px;color:silver">%/2s</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' revolutions/min'
+            }
+        }]
+    });
+    // 定时刷新数据
+    setInterval(function () {
+        var point,            newVal,
+            inc;
+        if (chart1) {
+            point = chart1.series[0].points[0];
+            inc = 1;
+            newVal = 65;
+            point.update(newVal);
+        }
+        if (chart2) {
+            point = chart2.series[0].points[0];
+            inc = 1;
+            newVal = 89.1;
+            point.update(newVal);
+        }
+    }, 2000);
+
+</script>
+
 {% endblock %}
