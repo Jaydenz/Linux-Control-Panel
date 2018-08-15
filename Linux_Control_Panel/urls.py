@@ -2,7 +2,7 @@
 
 from django.conf.urls import url
 from django.contrib import admin
-from sys_info import views 
+from sys_info import views, search
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -22,4 +22,7 @@ urlpatterns = [
     url(r'^ajax_list/$', views.ajax_list, name='ajax-list'),
     url(r'^cpu_percent/$', views.cpu_percent, name='cpu_percent'),
     url(r'^add/$', views.add, name='add'),
+
+    url(r'^search/$', search.search),
+    url(r'^searchform$', search.search_form)
 ]
