@@ -1,0 +1,12 @@
+{
+    "python.dataScience.changeDirOnImportExport": false,
+    "python.venvPath": "${workspaceFolder}/venv",
+    "python.venvFolders": [
+        "envs",
+        ".pyenv",
+        ".direnv",
+        ".venv",
+        "venv"
+    ],
+    "python.pythonPath": "venv/bin/python",
+}
