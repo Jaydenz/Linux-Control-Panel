@@ -8,5 +8,5 @@
         ".venv",
         "venv"
     ],
-    "python.pythonPath": "venv/bin/python",
+    "python.pythonPath": "venv\\Scripts\\python3.exe",
 }
